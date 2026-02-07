@@ -146,7 +146,7 @@ client.once('ready', () => {
 client.login(BOT_TOKEN);
 
 // Serve index.html for any other route (SPA support)
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
