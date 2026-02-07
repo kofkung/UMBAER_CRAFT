@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* Custom Theme Variables - Dark Gold Luxury ⚜️ */
+@theme {
+    /* Colors */
+    --color-bg-primary: #050505;
+    --color-bg-secondary: #0a0a0a;
+    --color-bg-card: rgba(20, 20, 20, 0.6);
+    --color-bg-card-hover: rgba(30, 30, 30, 0.8);
+    --color-text-primary: #f5f5f5;
+    --color-text-secondary: #d4d4d4;
+    --color-text-muted: #a3a3a3;
+    --color-accent: #fbbf24;
+    --color-accent-secondary: #d97706;
+    --color-border: rgba(251, 191, 36, 0.2);
+    --color-shadow: rgba(251, 191, 36, 0.15);
+    --font-outfit: 'Outfit', sans-serif;
+}
+
+/* Base Styles */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-outfit);
+        background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 100%);
+        color: var(--color-text-primary);
+        overflow-x: hidden;
+        /* Disable all text selection */
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-touch-callout: none;
+    }
+
+    /* Allow selection only in form inputs */
+    input,
+    textarea,
+    select {
+        user-select: text;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+    }
+
+    /* Prevent drag on images and links */
+    img,
+    a {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #fbbf24, #d97706);
+        border-radius: 99px;
+        border: 1px solid #0a0a0a;
+    }
+}
+
+/* Custom Components */
+@layer components {
+    .gradient-text {
+        @apply bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent;
+    }
+
+    /* Animated Gold Gradient - For Shop Name */
+    .animate-gold-text {
+        background: linear-gradient(90deg, #fbbf24, #f59e0b, #fef3c7, #fbbf24, #f59e0b);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gold-shine 3s linear infinite;
+    }
+
+    /* Animated Dark Gold Gradient - For Headlines */
+    .animate-dark-gold-text {
+        background: linear-gradient(90deg, #1a1a1a, #d97706, #fbbf24, #1a1a1a, #d97706);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gold-shine 3s linear infinite;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold rounded-lg shadow-lg shadow-amber-500/20 uppercase tracking-wide hover:-translate-y-1 hover:shadow-amber-500/30 hover:brightness-110 active:scale-95 transition-all duration-300;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-amber-500/50 text-amber-400 font-bold rounded-lg hover:bg-amber-500/10 hover:border-amber-400 hover:-translate-y-1 active:scale-95 transition-all duration-300 uppercase tracking-wide;
+    }
+
+    .section-badge {
+        @apply inline-flex items-center gap-2 px-5 py-2 bg-amber-500/10 border border-amber-500/30 rounded-full text-sm font-semibold text-amber-400 shadow-sm mb-6 backdrop-blur-md uppercase tracking-wider;
+    }
+
+    .service-card {
+        @apply bg-neutral-900/60 border border-white/5 rounded-xl p-8 relative shadow-lg shadow-black/50 hover:-translate-y-2 hover:bg-neutral-900/80 hover:border-amber-500/40 hover:shadow-xl hover:shadow-amber-500/10 backdrop-blur-md transition-all duration-500;
+    }
+
+    .gallery-item {
+        @apply relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-md border border-white/5 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/20 hover:border-amber-500/50 transition-all duration-500;
+    }
+
+    .nav-link {
+        @apply text-white/70 font-medium hover:text-amber-400 relative transition-colors duration-200 uppercase tracking-wide text-sm;
+    }
+
+    .nav-link::after {
+        content: '';
+        @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300;
+    }
+
+    .nav-link:hover::after {
+        @apply w-full;
+    }
+
+    .form-input {
+        @apply w-full px-5 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 shadow-inner focus:outline-none focus:border-amber-500/50 focus:bg-white/10 focus:ring-1 focus:ring-amber-500/50 transition-all duration-300;
+    }
+
+    .reveal {
+        @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+    }
+
+    .reveal.active {
+        @apply opacity-100 translate-y-0;
+    }
+
+    .reveal-left {
+        @apply opacity-0 -translate-x-10 transition-all duration-700 ease-out;
+    }
+
+    .reveal-left.active {
+        @apply opacity-100 translate-x-0;
+    }
+
+    .reveal-right {
+        @apply opacity-0 translate-x-10 transition-all duration-700 ease-out;
+    }
+
+    .reveal-right.active {
+        @apply opacity-100 translate-x-0;
+    }
+
+    .reveal-scale {
+        @apply opacity-0 scale-90 transition-all duration-700 ease-out;
+    }
+
+    .reveal-scale.active {
+        @apply opacity-100 scale-100;
+    }
+}
+
+/* Animations */
+@keyframes rotateCube {
+    from {
+        transform: rotateX(-15deg) rotateY(0deg);
+    }
+
+    to {
+        transform: rotateX(-15deg) rotateY(360deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes gold-shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes purple-shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.animate-cube {
+    animation: rotateCube 25s linear infinite;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 4s infinite;
+}
+
+.glass-panel {
+    @apply bg-neutral-900/60 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black;
+}
+
+.nav-menu-mobile {
+    @apply fixed top-0 right-0 w-[80%] h-screen bg-black/95 backdrop-blur-xl flex-col justify-center items-center gap-8 z-50 shadow-2xl border-l border-white/10 translate-x-full transition-transform duration-500 ease-out;
+}
+
+.nav-menu-mobile.active {
+    @apply translate-x-0;
+}
+
+.mobile-overlay {
+    @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300;
+}
+
+.mobile-overlay.active {
+    @apply opacity-100 visible;
+}
+
+.card-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.card-shine:hover::before {
+    left: 100%;
+}
+
+/* Custom Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin 3s linear infinite;
+}
+
+/* Page Transitions - Temporarily Removed
+body {
+    animation: fadeInPage 0.5s ease-out;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+*/
+
+/* Link Click Transition */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
