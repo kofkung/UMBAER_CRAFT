@@ -13,5 +13,13 @@ export default defineConfig({
                 secure: false,
             }
         }
+    },
+    build: {
+        rollupOptions: {
+            input: {
+                main: 'index.html',
+                order: 'order.html'
+            }
+        }
     }
 })
