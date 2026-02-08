@@ -226,9 +226,9 @@ function calculatePrice(scale, part) {
     const prices = {
         '64': { 'full': 30, 'head': 15, 'body': 15 },
         '128': { 'full': 40, 'head': 20, 'body': 20 },
-        '512': { 'full': 160, 'head': 80, 'body': 80 },
-        '1024': { 'full': 280, 'head': 140, 'body': 140 },
-        '2048': { 'full': 350, 'head': 200, 'body': 200 },
+        '512': { 'full': 140, 'head': 70, 'body': 70 },
+        '1024': { 'full': 200, 'head': 110, 'body': 110 },
+        '2048': { 'full': 280, 'head': 150, 'body': 150 },
         'figura': { 'full': 100, 'head': 100, 'body': 100 }
     };
 
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Discord Webhook Configuration
 // Backend API Configuration
 // 🔴 Debugging: Use full URL to bypass proxy issues
-const API_URL = 'http://localhost:3000/api/order';
+const API_URL = '/api/order';
 
 async function sendOrderToDiscord(paymentMethod, slipFile) {
     console.log('🚀 sendOrderToDiscord called');
